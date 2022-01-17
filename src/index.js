@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Navbar from './Navbar';
 import reportWebVitals from './reportWebVitals';
+
+class Portfolio extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      currentDisplay: ""
+    };
+  }
+  render() {
+    return(
+      <div id="portfolio">
+        <Navbar />
+      </div>
+    )
+  }
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Portfolio />
   </React.StrictMode>,
   document.getElementById('root')
 );
