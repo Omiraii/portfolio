@@ -2,19 +2,45 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Navbar from './Navbar';
+import Display from './Display';
 import reportWebVitals from './reportWebVitals';
 
 class Portfolio extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currentDisplay: ""
+      currentDisplay: "home"
     };
+    this.changePage = this.changePage.bind(this);
+  }
+  changePage(props) {
+    let id = props.target.className
+    if(id === "n-home") {
+      this.setState({
+        currentDisplay: 'home'
+      })
+    } else if(id === "n-projects") {
+      this.setState({
+        currentDisplay: 'projects'
+      })
+    } else if(id === "n-about") {
+      this.setState({
+        currentDisplay: 'about'
+      })
+    } else if(id === "n-contact") {
+      this.setState({
+        currentDisplay: 'contact'
+      })
+    }
   }
   render() {
     return(
       <div id="portfolio">
-        <Navbar />
+        <Navbar 
+          changePage={this.changePage}/>
+        <Display 
+          page={this.state.currentDisplay}
+          changePage={this.changePage}/>
       </div>
     )
   }
